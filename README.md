@@ -222,4 +222,4 @@ MIT License — see [LICENSE](LICENSE) for details.
 ## Contact
 
 - **GitHub:** [KikiProjecto/lentera](https://github.com/KikiProjecto/lentera)
-- **Discord:** [kikiprojecri](https://discordapp.com/users/1125940822446186598)
+- **Discord:** [kikiprojecto](https://discordapp.com/users/1125940822446186598)
