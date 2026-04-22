@@ -223,9 +223,3 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 - **GitHub:** [KikiProjecto/lentera](https://github.com/KikiProjecto/lentera)
 - **Discord:** [Join community](#)
-
----
-
-<p align="center">
-  Made with ❤️ for Indonesian Gen Z
-</p>
