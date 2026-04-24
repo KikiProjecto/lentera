@@ -1,5 +1,5 @@
 <p align="center">
-  <span style="display: inline-block; font-size: 3.5em; font-weight: 900; background: conic-gradient(from 0deg, #FFD700, #FFA500, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">LENTERA</span>
+  <span style="display: inline-block; font-size: 5.2rem; font-weight: 900; font-family: 'Courier New', Courier, monospace; letter-spacing: 0.18em; line-height: 1; text-transform: uppercase; background: conic-gradient(from 180deg, #FFD700, #FFBE00, #FFC451, #FFB800, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; filter: saturate(180%) contrast(120%); text-shadow: 0.08em 0.08em 0 #8C6B00, -0.06em -0.06em 0 #FFFFFF, 0.12em -0.04em 0 #8C6B00;">LENTERA</span>
 </p>
 
 <p align="center">
