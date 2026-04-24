@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="Lentera.png" alt="Lentera Banner+Title" width="80%" />
+  <img src="Lentera.png" alt="Lentera Banner+Title" width="70%" />
 </div>
 
 <p align="center">
