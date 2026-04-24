@@ -27,7 +27,7 @@ Based on official financial intelligence data (2023-2025):
 - **IDR 327 Trillion** in unauthorized online gambling transactions in Indonesia
 - **2.37 million individuals** involved, with 80% from lower-middle-income backgrounds
 - **960,000 students and minors** ensnared in gambling habits
-- 43.3% of students have engaged in online gambling; 25.9% remain actively involved
+- **43.3% of students** have engaged in online gambling; 25.9% remain actively involved
 
 ---
 
