@@ -31,7 +31,7 @@ Based on official financial intelligence data (2023-2025):
 
 ---
 
-## Wise Guardians Characters
+## Lentera Characters
 
 | Character | Element | Role |
 |-----------|---------|------|
