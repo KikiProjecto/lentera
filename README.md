@@ -83,11 +83,11 @@ Phantom Wallet browser extension
 ### Installation
 
 ```bash
-# Clone the repository
+# clone the repository
 git clone https://github.com/KikiProjecto/lentera.git
 cd lentera
 
-# Install project dependencies
+# install project dependencies
 npm install
 # or use pnpm
 pnpm install
@@ -96,17 +96,17 @@ pnpm install
 ### Configuration
 
 ```bash
-# Copy the environment template file
+# copy the environment template file
 cp .env.example .env.local
 
-# Update with your Solana RPC provider URL
+# update with your Solana RPC provider URL
 # NEXT_PUBLIC_SOLANA_RPC_URL=your_rpc_url
 ```
 
 ### Development
 
 ```bash
-# Start the development server
+# start the development server
 npm run dev
 # Open http://localhost:3000 in your browser
 ```
