@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <strong>Lentera</strong> — GameFi Edutainment Platform for Financial Literacy & Online Gambling Prevention
+  <strong>We are witnessing Our Lentera</strong>
 </p>
 
 ---
