@@ -43,7 +43,7 @@ Based on official financial intelligence data (2023-2025):
 
 | Monster | Type | Difficulty |
 |---------|------|------------|
-| 🎰 Slot Siren | Slot | Easy |
+| 🎰 Slot Goblin | Slot | Easy |
 | 😈 Rugpull Demon | Rug | Medium |
 | 👻 FOMO Ghost | FOMO | Hard |
 
