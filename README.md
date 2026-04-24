@@ -223,5 +223,5 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ## Contact me
 
-- **GitHub:** [KikiProjecto/lentera](https://github.com/KikiProjecto/lentera)
 - **Discord:** [kikiprojecto](https://discordapp.com/users/1125940822446186598)
+- **Telegram:** [KikiProjecto](https://t.me/KikiProjecto)
