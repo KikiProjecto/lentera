@@ -1,4 +1,6 @@
-# Lentera
+<p align="center">
+  <span style="display: inline-block; font-size: 3.5em; font-weight: 900; background: conic-gradient(from 0deg, #FFD700, #FFA500, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">LENTERA</span>
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Solana-000000?style=for-the-badge&logo=solana&logoColor=white" alt="Solana" />
@@ -8,218 +10,218 @@
 </p>
 
 <p align="center">
-  <strong>Lentera</strong> — GameFi Edutainment untuk Literasi Keuangan & Pencegahan Judi Online
+  <strong>Lentera</strong> — GameFi Edutainment Platform for Financial Literacy & Online Gambling Prevention
 </p>
 
 ---
 
-## Apa Itu Lentera?
+## About Lentera
 
-Lentera adalah **GameFi dApp** di blockchain Solana yang menggabungkan **edutainment** dengan **play-to-earn** untuk membantu Gen Z dan mahasiswa Indonesia menghindari godaan judi online sambil belajar literasi keuangan.
+Lentera is a **GameFi decentralized application** built on the Solana blockchain that combines **edutainment** with **play-to-earn** mechanics to help Gen Z and students avoid the allure of online gambling while acquiring essential financial literacy skills.
 
-> **Tagline:** "Jaga Masa Depanmu dari Godaan Digital – Main, Belajar, Menang Bareng Karakter Lucu!"
+> **Tagline:** "Secure Your Future from Digital Temptation – Play, Learn, and Earn with Enchanting Characters!"
 
-### Masalah yang Diselesaikan
+### Problem Statement
 
-Berdasarkan data PPATK 2023-2025:
-- **Rp 327 Trilyun** transaksi judol online di Indonesia
-- **2,37 juta orang** terlibat, 80% dari kelas menengah bawah
-- **960.000 mahasiswa dan pelajar** terjerat
-- 43,3% mahasiswa pernah berjudi online; 25,9% masih aktif
+Based on official financial intelligence data (2023-2025):
+- **IDR 327 Trillion** in unauthorized online gambling transactions in Indonesia
+- **2.37 million individuals** involved, with 80% from lower-middle-income backgrounds
+- **960,000 students and minors** ensnared in gambling habits
+- 43.3% of students have engaged in online gambling; 25.9% remain actively involved
 
 ---
 
-## Karakter Bijak Guardians
+## Wise Guardians Characters
 
-| Karakter | Element | Peran |
-|----------|---------|-------|
-| 🦎 Komodo Dragon | Earth | Hero kuat & bijak |
-| 🦉 Wayang Owl | Void | Penasihat pintar |
-| 🦧 Orangutan | Air | Inovator kreatif |
+| Character | Element | Role |
+|-----------|---------|------|
+| 🦎 Komodo Dragon | Earth | Powerful and wise hero |
+| 🦉 Wayang Owl | Void | Intelligent advisor |
+| 🦧 Orangutan | Water | Creative innovator |
 
-### Monster Vice yang Dikalahkan
+### Vice Monsters to Defeat
 
-| Monster | Tipe | Difficulty |
+| Monster | Type | Difficulty |
 |---------|------|------------|
 | 🎰 Slot Siren | Slot | Easy |
 | 😈 Rugpull Demon | Rug | Medium |
-| 👻 FOMO Ghost | Fomo | Hard |
+| 👻 FOMO Ghost | FOMO | Hard |
 
 ---
 
-## Tech Stack
+## Technology Stack
 
 ### Blockchain & Backend
-- **Solana** — Blockchain utama
-- **Anchor (Rust)** — Smart contract
-- **Metaplex** — NFT Guardians
-- **SPL Token** — $LIT token
+- **Solana** — Primary blockchain
+- **Anchor (Rust)** — Smart contract framework
+- **Metaplex** — NFT Guardian minting
+- **SPL Token** — $LIT token standard
 
-### Frontend & Game
+### Frontend & Game Engine
 - **Next.js 14** — React framework
-- **TypeScript** — Type safety
-- **Tailwind CSS** — Styling
-- **Framer Motion** — Animasi
-- **Phaser.js** — Game engine
+- **TypeScript** — Type safety and development
+- **Tailwind CSS** — Modern styling
+- **Framer Motion** — Smooth animations
+- **Phaser.js** — 2D game engine
 
 ### Infrastructure
-- **Helius RPC** — Blockchain indexing
-- **Phantom Wallet** — Wallet integration
+- **Helius RPC** — Blockchain data indexing
+- **Phantom Wallet** — Web3 wallet integration
 
 ---
 
-## Quick Start
+## Quick Start Guide
 
 ### Prerequisites
 
 ```bash
-node.js >= 18
-npm or pnpm
-Phantom Wallet (browser extension)
+Node.js >= 18
+npm or pnpm package manager
+Phantom Wallet browser extension
 ```
 
 ### Installation
 
 ```bash
-# Clone repository
+# Clone the repository
 git clone https://github.com/KikiProjecto/lentera.git
 cd lentera
 
-# Install dependencies
+# Install project dependencies
 npm install
-# atau
+# or use pnpm
 pnpm install
 ```
 
 ### Configuration
 
 ```bash
-# Copy environment file
+# Copy the environment template file
 cp .env.example .env.local
 
-# Edit dengan RPC URL Anda
+# Update with your Solana RPC provider URL
 # NEXT_PUBLIC_SOLANA_RPC_URL=your_rpc_url
 ```
 
 ### Development
 
 ```bash
-# Run development server
+# Start the development server
 npm run dev
-# Buka http://localhost:3000
+# Open http://localhost:3000 in your browser
 ```
 
-### Build Production
+### Production Build
 
 ```bash
-# Build untuk production
+# Build optimized production bundle
 npm run build
 
-# Start production server
+# Start the production server
 npm start
 ```
 
 ---
 
-## Project Structure
+## Project Architecture
 
 ```
 lentera/
 ├── src/
-│   ├── app/                    # Next.js App Router
-│   │   ├── dashboard/          # Dashboard page
-│   │   ├── game/               # Game page
-│   │   ├── layout.tsx          # Root layout
+│   ├── app/                    # Next.js App Router configurations
+│   │   ├── dashboard/          # Dashboard page component
+│   │   ├── game/               # Game page component
+│   │   ├── layout.tsx          # Root layout wrapper
 │   │   ├── page.tsx            # Landing page
 │   │   ├── providers.tsx       # Context providers
-│   │   └── globals.css         # Global styles
+│   │   └── globals.css         # Global stylesheet
 │   ├── components/
 │   │   ├── ui/                 # Reusable UI components
-│   │   │   ├── Button.tsx
-│   │   │   └── Card.tsx
-│   │   ├── characters/         # Character components
+│   │   │   ├── Button.tsx      # Button component
+│   │   │   └── Card.tsx        # Card component
+│   │   ├── characters/         # Character-related components
 │   │   │   └── CharacterCard.tsx
-│   │   └── game/               # Game components
+│   │   └── game/               # Game-specific components
 │   │       └── GameEngineClient.tsx
 │   ├── data/
-│   │   └── characters.ts       # Character & monster data
+│   │   └── characters.ts       # Character and monster data definitions
 │   ├── lib/
 │   │   ├── animation-presets.tsx
-│   │   ├── design-tokens.ts
-│   │   └── game-engine.ts      # Phaser game engine
-│   └── types/                  # TypeScript types
-├── constants/                  # App constants
+│   │   ├── design-tokens.ts    # Design system tokens
+│   │   └── game-engine.ts      # Phaser game engine integration
+│   └── types/                  # TypeScript type definitions
+├── constants/                  # Application-wide constants
 ├── public/
 │   └── assets/                 # Static assets
-├── .env.example               # Environment template
-├── next.config.mjs            # Next.js config
-├── tailwind.config.ts         # Tailwind config
-├── tsconfig.json              # TypeScript config
-└── package.json               # Dependencies
+├── .env.example                # Environment variables template
+├── next.config.mjs             # Next.js configuration
+├── tailwind.config.ts          # Tailwind CSS configuration
+├── tsconfig.json               # TypeScript configuration
+└── package.json                # Project dependencies and scripts
 ```
 
 ---
 
-## Fitur Utama
+## Core Features
 
 ### 1. Battle Arena
-Pilih Guardian dan lawan monster vice untuk earn rewards.
+Select your Guardian character and engage in battles against vice monsters to earn rewards while learning financial concepts.
 
-### 2. Daily Quest
-Mini-game edukasi 5-10 menit per hari untuk belajar literasi keuangan.
+### 2. Daily Quests
+Participate in bite-sized educational mini-games (5-10 minutes daily) to develop financial literacy skills.
 
 ### 3. NFT Guardians
-Koleksi dan upgrade karakter sebagai NFT dengan berbagai skin Indonesia.
+Collect and upgrade unique character NFTs with various Indonesian-inspired designs and abilities.
 
-### 4. Dashboard
-Tracker keuangan personal dan streak "no-gamble pledge".
+### 4. Personal Dashboard
+Track personal finances and maintain your "no-gamble pledge" streak with analytics and insights.
 
-### 5. Leaderboard Campus
-Kompetisi antar-universitas melalui guild system.
+### 5. Campus Competition
+Compete against other universities through guild-based leaderboard systems and campus-wide tournaments.
 
 ---
 
-## Roadmap
+## Development Roadmap
 
-### Phase 1: MVP (Sekarang)
-- [x] Landing page
-- [x] Battle arena prototype
-- [x] Character selection
-- [x] Dashboard UI
+### Phase 1: Minimum Viable Product (Current)
+- [x] Landing page with project information
+- [x] Battle arena prototype and mechanics
+- [x] Character selection interface
+- [x] Dashboard user interface
 
-### Phase 2: Beta
-- [ ] Wallet connection (Phantom)
-- [ ] Phaser game integration
-- [ ] Daily quest system
-- [ ] Basic token rewards
+### Phase 2: Beta Release
+- [ ] Phantom wallet connection and authentication
+- [ ] Phaser game engine integration
+- [ ] Daily quest system implementation
+- [ ] Basic token reward distribution
 
-### Phase 3: Launch
-- [ ] Smart contracts (Anchor)
-- [ ] NFT Minting (Metaplex)
-- [ ] $LIT Token launch
-- [ ] Campus guild system
+### Phase 3: Public Launch
+- [ ] Smart contract development (Anchor)
+- [ ] NFT minting functionality (Metaplex)
+- [ ] $LIT Token official launch
+- [ ] Campus guild system and competitions
 
 ---
 
 ## Contributing
 
-Kami welcome kontribusi dari developer!
+We warmly welcome contributions from developers worldwide!
 
-1. Fork repository
-2. Buat feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit perubahan (`git commit -m 'Add AmazingFeature'`)
-4. Push ke branch (`git push origin feature/AmazingFeature`)
-5. Buka Pull Request
+1. Fork the repository to your GitHub account
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes with descriptive messages (`git commit -m 'Add AmazingFeature'`)
+4. Push your branch to your fork (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request describing your improvements
 
 ---
 
 ## License
 
-MIT License — see [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for complete details.
 
 ---
 
-## Contact
+## Contact & Community
 
-- **GitHub:** [KikiProjecto/lentera](https://github.com/KikiProjecto/lentera)
-- **Discord:** [kikiprojecto](https://discordapp.com/users/1125940822446186598)
+- **GitHub Repository:** [KikiProjecto/lentera](https://github.com/KikiProjecto/lentera)
+- **Discord Community:** [kikiprojecto](https://discordapp.com/users/1125940822446186598)
