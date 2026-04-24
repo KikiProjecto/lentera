@@ -19,7 +19,7 @@
 
 Lentera is a **GameFi decentralized application** built on the Solana blockchain that combines **edutainment** with **play-to-earn** mechanics to help Gen Z and students avoid the allure of online gambling while acquiring essential financial literacy skills.
 
-> **Tagline:** "Secure Your Future from Digital Temptation – Play, Learn, and Earn with Enchanting Characters!"
+> Secure Your Future from Digital Temptation – Play, Learn, and Earn with Enchanting Characters!
 
 ### Problem Statement
 
