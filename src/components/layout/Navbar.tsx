@@ -17,6 +17,7 @@ const navItems = [
   { href: "/game", label: "Battle", icon: Gamepad2 },
   { href: "/characters", label: "Guardians", icon: Users },
   { href: "/quest", label: "Quests", icon: BookOpen },
+  { href: "/guild", label: "Campus", icon: Users },
   { href: "/gallery", label: "Gallery", icon: Image },
   { href: "/leaderboard", label: "Leaderboard", icon: Trophy },
   { href: "/about", label: "Story", icon: Sparkles },

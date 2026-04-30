@@ -38,6 +38,8 @@ Based on official financial intelligence data (2023-2025):
 | 🦎 Komodo Dragon | Earth | Powerful and wise hero |
 | 🦉 Wayang Owl | Void | Intelligent advisor |
 | 🦧 Orangutan | Water | Creative innovator |
+| 🔮 Prism | Light | Mystic guardian |
+| 🔥 Flame | Fire | Passionate warrior |
 
 ### Vice Monsters to Defeat
 
@@ -46,6 +48,7 @@ Based on official financial intelligence data (2023-2025):
 | 🎰 Slot Goblin | Slot | Easy |
 | 😈 Rugpull Demon | Rug | Medium |
 | 👻 FOMO Ghost | FOMO | Hard |
+| 👺 Greed Golem | Greed | Expert |
 
 ---
 
@@ -53,20 +56,65 @@ Based on official financial intelligence data (2023-2025):
 
 ### Blockchain & Backend
 - **Solana** — Primary blockchain
-- **Anchor (Rust)** — Smart contract framework
-- **Metaplex** — NFT Guardian minting
+- **Phantom Wallet** — Web3 wallet integration
+- **Helius RPC** — Blockchain data indexing
 - **SPL Token** — $LIT token standard
 
 ### Frontend & Game Engine
-- **Next.js 14** — React framework
+- **Next.js 14** — React framework with App Router
 - **TypeScript** — Type safety and development
 - **Tailwind CSS** — Modern styling
 - **Framer Motion** — Smooth animations
 - **Phaser.js** — 2D game engine
 
-### Infrastructure
-- **Helius RPC** — Blockchain data indexing
-- **Phantom Wallet** — Web3 wallet integration
+---
+
+## Current Features
+
+### ✅ Battle Arena
+Select your Guardian character and engage in turn-based battles against vice monsters to earn rewards while learning financial concepts.
+
+### ✅ Daily Quests
+Educational mini-games with 4 categories:
+- 💰 Budget Management
+- 🏦 Saving Habits
+- 📈 Investment Knowledge
+- 📊 Debt Management
+
+### ✅ Gamification System
+- 20+ Achievements with rarity tiers
+- Daily Challenges with rewards
+- XP & Level Progression (10 tiers)
+- Token rewards ($LIT)
+
+### ✅ Campus Competition (Guild System)
+- University-based guild rankings
+- Weekly & Monthly tournaments
+- Campus Cup events
+- Leaderboard system
+
+### ✅ Personal Dashboard
+- Player stats and profile
+- Wallet connection
+- Quest tracking
+- Progress overview
+
+---
+
+## Pages
+
+| Route | Description |
+|-------|-------------|
+| `/` | Landing page with game introduction |
+| `/game` | Main game with Phaser engine |
+| `/dashboard` | Personal dashboard |
+| `/characters` | Guardian & monster collection |
+| `/quest` | Quest system with quizzes |
+| `/guild` | Campus competition & guild rankings |
+| `/leaderboard` | Global player rankings |
+| `/gallery` | Game gallery & assets |
+| `/settings` | App settings & preferences |
+| `/about` | Story & project information |
 
 ---
 
@@ -101,6 +149,7 @@ cp .env.example .env.local
 
 # update with your Solana RPC provider URL
 # NEXT_PUBLIC_SOLANA_RPC_URL=your_rpc_url
+# NEXT_PUBLIC_RPC_ENDPOINT=your_endpoint
 ```
 
 ### Development
@@ -128,78 +177,67 @@ npm start
 ```
 lentera/
 ├── src/
-│   ├── app/                    # Next.js App Router configurations
-│   │   ├── dashboard/          # Dashboard page component
-│   │   ├── game/               # Game page component
-│   │   ├── layout.tsx          # Root layout wrapper
+│   ├── app/                    # Next.js App Router
+│   │   ├── dashboard/          # Dashboard page
+│   │   ├── game/               # Phaser game page
+│   │   ├── characters/         # Characters page
+│   │   ├── quest/              # Quest system
+│   │   ├── guild/              # Campus competition
+│   │   ├── leaderboard/         # Rankings
+│   │   ├── gallery/            # Gallery
+│   │   ├── settings/           # Settings
+│   │   ├── about/               # About page
+│   │   ├── layout.tsx          # Root layout
 │   │   ├── page.tsx            # Landing page
 │   │   ├── providers.tsx       # Context providers
-│   │   └── globals.css         # Global stylesheet
+│   │   └── globals.css         # Global styles
 │   ├── components/
-│   │   ├── ui/                 # Reusable UI components
-│   │   │   ├── Button.tsx      # Button component
-│   │   │   └── Card.tsx        # Card component
-│   │   ├── characters/         # Character-related components
-│   │   │   └── CharacterCard.tsx
-│   │   └── game/               # Game-specific components
-│   │       └── GameEngineClient.tsx
-│   ├── data/
-│   │   └── characters.ts       # Character and monster data definitions
-│   ├── lib/
-│   │   ├── animation-presets.tsx
-│   │   ├── design-tokens.ts    # Design system tokens
-│   │   └── game-engine.ts      # Phaser game engine integration
-│   └── types/                  # TypeScript type definitions
-├── constants/                  # Application-wide constants
+│   │   ├── battle/             # Battle UI components
+│   │   ├── gamification/       # Achievements, quests, progression
+│   │   ├── game/               # Game engine & overlay
+│   │   ├── characters/          # Character cards
+│   │   ├── leaderboard/         # Ranking components
+│   │   ├── quest/              # Quest components
+│   │   ├── layout/             # Navbar & layout
+│   │   ├── ui/                 # Reusable UI
+│   │   └── wallet/             # Wallet connection
+│   ├── data/                   # Game data (characters, quests)
+│   └── lib/                    # Utilities & state
+│       ├── game-state.tsx      # Game state management
+│       ├── game-engine.ts      # Phaser integration
+│       ├── gamification.ts     # Achievements & progression
+│       ├── solana-rewards.tsx  # Token rewards
+│       └── ...
 ├── public/
-│   └── assets/                 # Static assets
-├── .env.example                # Environment variables template
-├── next.config.mjs             # Next.js configuration
-├── tailwind.config.ts          # Tailwind CSS configuration
-├── tsconfig.json               # TypeScript configuration
-└── package.json                # Project dependencies and scripts
+│   ├── manifest.json           # PWA manifest
+│   └── sw.js                   # Service worker
+└── ...
 ```
-
----
-
-## Core Features
-
-### 1. Battle Arena
-Select your Guardian character and engage in battles against vice monsters to earn rewards while learning financial concepts.
-
-### 2. Daily Quests
-Participate in bite-sized educational mini-games (5-10 minutes daily) to develop financial literacy skills.
-
-### 3. NFT Guardians
-Collect and upgrade unique character NFTs with various Indonesian-inspired designs and abilities.
-
-### 4. Personal Dashboard
-Track personal finances and maintain your "no-gamble pledge" streak with analytics and insights.
-
-### 5. Campus Competition
-Compete against other universities through guild-based leaderboard systems and campus-wide tournaments.
 
 ---
 
 ## Development Roadmap
 
-### Phase 1: Minimum Viable Product (Current)
+### Phase 1: Minimum Viable Product ✅ COMPLETE
 - [x] Landing page with project information
 - [x] Battle arena prototype and mechanics
 - [x] Character selection interface
 - [x] Dashboard user interface
+- [x] Multiple page routes (10+ pages)
 
-### Phase 2: Beta Release
-- [ ] Phantom wallet connection and authentication
-- [ ] Phaser game engine integration
-- [ ] Daily quest system implementation
-- [ ] Basic token reward distribution
+### Phase 2: Beta Release ✅ COMPLETE
+- [x] Phantom wallet connection and authentication
+- [x] Phaser game engine integration
+- [x] Daily quest system implementation
+- [x] Basic token reward distribution
+- [x] Gamification system (achievements, progression)
+- [x] Campus guild competition system
 
-### Phase 3: Public Launch
+### Phase 3: Public Launch 🔄 IN PROGRESS
 - [ ] Smart contract development (Anchor)
 - [ ] NFT minting functionality (Metaplex)
 - [ ] $LIT Token official launch
-- [ ] Campus guild system and competitions
+- [ ] Advanced guild features
 
 ---
 
