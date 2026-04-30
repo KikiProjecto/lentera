@@ -41,9 +41,5 @@ next-env.d.ts
 *.swp
 *.swo
 
-# Large assets
-*.png
-*.jpg
-
 # Tests
 tests/
