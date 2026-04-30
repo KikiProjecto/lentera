@@ -26,6 +26,12 @@ export interface CharacterConfig {
   personality: string[];
   origin: string;
   element: "light" | "fire" | "water" | "earth" | "air" | "void";
+  sprites: {
+    idle: string;
+    attack: string;
+    hurt: string;
+    victory: string;
+  };
   skins: CharacterSkin[];
 }
 
@@ -56,6 +62,7 @@ export interface ViceMonster {
   health: number;
   attackPattern: string;
   weakness: string;
+  element: Element;
   reward: {
     tokens: number;
     xp: number;
@@ -91,6 +98,12 @@ export const GUARDIANS: CharacterConfig[] = [
     personality: ["Pemimpin alami", "Tenang tapi tegas", "Melindungi yang lemah"],
     origin: "Pulau Komodo, Nusa Tenggara Timur",
     element: "earth",
+    sprites: {
+      idle: "/assets/sprites/guardians/komodo-idle.png",
+      attack: "/assets/sprites/guardians/komodo-attack.png",
+      hurt: "/assets/sprites/guardians/komodo-hurt.png",
+      victory: "/assets/sprites/guardians/komodo-victory.png",
+    },
     skins: [
       { id: "komodo-default", name: "Default", description: "Tampilan default Komodo", colorTheme: { primary: "#2DD4BF", secondary: "#0D9488", accent: "#5EEAD4" }, price: 0, unlockRequirement: "Starter", isLimited: false },
       { id: "komodo-batik", name: "Batik Komodo", description: "Batik khasIndonesia dengan motif tradisional", colorTheme: { primary: "#1E3A5F", secondary: "#8B4513", accent: "#DAA520" }, price: 500, unlockRequirement: "Lv.10", isLimited: false },
@@ -119,6 +132,12 @@ export const GUARDIANS: CharacterConfig[] = [
     personality: ["Filosofis", "Penyimpan rahasia", "Suka mengajar"],
     origin: "Keraton Yogyakarta",
     element: "void",
+    sprites: {
+      idle: "/assets/sprites/guardians/owl-idle.png",
+      attack: "/assets/sprites/guardians/owl-attack.png",
+      hurt: "/assets/sprites/guardians/owl-hurt.png",
+      victory: "/assets/sprites/guardians/owl-victory.png",
+    },
     skins: [
       { id: "owl-default", name: "Default", description: "Tampilan default Wayang Owl", colorTheme: { primary: "#A78BFA", secondary: "#7C3AED", accent: "#C4B5FD" }, price: 0, unlockRequirement: "Starter", isLimited: false },
       { id: "owl-shadow", name: "Shadow Owl", description: "Versi bayangan yang misterius", colorTheme: { primary: "#4C1D95", secondary: "#1E1B4B", accent: "#8B5CF6" }, price: 800, unlockRequirement: "Lv.15", isLimited: false },
@@ -147,6 +166,12 @@ export const GUARDIANS: CharacterConfig[] = [
     personality: ["Kreatif tanpa batas", "Selalu berpikir out-of-the-box", "Berbagi ilmu"],
     origin: "Taman Nasional Tanjung Puting",
     element: "air",
+    sprites: {
+      idle: "/assets/sprites/guardians/orangutan-idle.png",
+      attack: "/assets/sprites/guardians/orangutan-attack.png",
+      hurt: "/assets/sprites/guardians/orangutan-hurt.png",
+      victory: "/assets/sprites/guardians/orangutan-victory.png",
+    },
     skins: [
       { id: "orangutan-default", name: "Default", description: "Tampilan default Orangutan", colorTheme: { primary: "#F59E0B", secondary: "#D97706", accent: "#FCD34D" }, price: 0, unlockRequirement: "Starter", isLimited: false },
       { id: "orangutan-cyber", name: "Cyber Orangutan", description: "Tampilan cyberpunk modern", colorTheme: { primary: "#06B6D4", secondary: "#0E7490", accent: "#22D3EE" }, price: 600, unlockRequirement: "Lv.8", isLimited: false },
@@ -174,6 +199,12 @@ export const GUARDIANS: CharacterConfig[] = [
     personality: ["Penuh harapan", "Memancarkan positif", "Mem percaya"],
     origin: "Pelangi Nusantara",
     element: "water",
+    sprites: {
+      idle: "/assets/sprites/guardians/prism-idle.png",
+      attack: "/assets/sprites/guardians/prism-attack.png",
+      hurt: "/assets/sprites/guardians/prism-hurt.png",
+      victory: "/assets/sprites/guardians/prism-victory.png",
+    },
     skins: [
       { id: "prism-default", name: "Default", description: "Tampilan default Prisma", colorTheme: { primary: "#06B6D4", secondary: "#0891B2", accent: "#22D3EE" }, price: 0, unlockRequirement: "Starter", isLimited: false },
     ],
@@ -200,6 +231,12 @@ export const GUARDIANS: CharacterConfig[] = [
     personality: ["Energik", "Tidak gentar", "Mau berubah"],
     origin: "Gunung Merapi",
     element: "fire",
+    sprites: {
+      idle: "/assets/sprites/guardians/flame-idle.png",
+      attack: "/assets/sprites/guardians/flame-attack.png",
+      hurt: "/assets/sprites/guardians/flame-hurt.png",
+      victory: "/assets/sprites/guardians/flame-victory.png",
+    },
     skins: [
       { id: "flame-default", name: "Default", description: "Tampilan default Api", colorTheme: { primary: "#EF4444", secondary: "#DC2626", accent: "#FCA5A5" }, price: 0, unlockRequirement: "Starter", isLimited: false },
       { id: "flame-blue", name: "Blue Flame", description: "Api biru yang lebih panas", colorTheme: { primary: "#3B82F6", secondary: "#1D4ED8", accent: "#60A5FA" }, price: 3000, unlockRequirement: "Event", isLimited: true, event: "SummerBurn" },
@@ -220,6 +257,7 @@ export const VICE_MONSTERS: ViceMonster[] = [
     health: 100,
     attackPattern: "slot-spin-attack",
     weakness: "kebanyakan",
+    element: "void",
     reward: { tokens: 10, xp: 50 },
     appearance: { shape: "siren-mermaid", features: [" mata memancarkan slots", "ekor seperti mesin slot", "suara yang magnetis"], animation: "spin-attract" },
   },
@@ -235,6 +273,7 @@ export const VICE_MONSTERS: ViceMonster[] = [
     health: 200,
     attackPattern: "rug-pull",
     weakness: "due diligence",
+    element: "void",
     reward: { tokens: 25, xp: 100, item: "Research Lens" },
     appearance: { shape: "demon-cloaked", features: [" mata merah menyala", "tangan yang menarik", "tersenyum jahat"], animation: "fade-away" },
   },
@@ -250,6 +289,7 @@ export const VICE_MONSTERS: ViceMonster[] = [
     health: 150,
     attackPattern: "fast-attack-fomo",
     weakness: "kesabaran",
+    element: "void",
     reward: { tokens: 20, xp: 75 },
     appearance: { shape: "ghost-transparent", features: ["tubuh transparan", "wajah ketakutan", " aura pink"], animation: "flash-appear" },
   },
@@ -265,6 +305,7 @@ export const VICE_MONSTERS: ViceMonster[] = [
     health: 300,
     attackPattern: "gold-steal",
     weakness: "kedermawanan",
+    element: "earth",
     reward: { tokens: 50, xp: 150 },
     appearance: { shape: "goblin-small", features: ["mata kuning seperti koin", "tangan besar", "harta berlimpah"], animation: "gold-shine" },
   },
@@ -310,4 +351,31 @@ export const ELEMENT_ICONS = {
   earth: "🌍",
   air: "💨",
   void: "✨",
+} as const;
+
+export type Element = "light" | "fire" | "water" | "earth" | "air" | "void";
+
+export const ELEMENTAL_ADVANTAGES: Record<Element, { strong: Element; weak: Element }> = {
+  fire: { strong: "air", weak: "water" },
+  water: { strong: "earth", weak: "fire" },
+  earth: { strong: "void", weak: "air" },
+  air: { strong: "water", weak: "earth" },
+  light: { strong: "void", weak: "dark" as Element },
+  void: { strong: "light", weak: "void" },
+};
+
+export function getElementalMultiplier(attackerElement: Element, defenderElement: Element): number {
+  const advantages = ELEMENTAL_ADVANTAGES[attackerElement];
+  if (advantages.strong === defenderElement) return 1.5;
+  if (advantages.weak === defenderElement) return 0.75;
+  return 1.0;
+}
+
+export const ELEMENT_COLORS: Record<Element, string> = {
+  fire: "#EF4444",
+  water: "#06B6D4",
+  earth: "#A78BFA",
+  air: "#2DD4BF",
+  light: "#FFBE0B",
+  void: "#8338EC",
 } as const;

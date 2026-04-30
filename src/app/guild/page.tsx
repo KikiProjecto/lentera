@@ -6,7 +6,8 @@ import { WalletButton } from "@/components/wallet/WalletButton";
 import { 
   Users, Trophy, Crown, Medal, Target, 
   Calendar, Zap, Swords, Star, TrendingUp,
-  ChevronRight, Shield, Flame
+  ChevronRight, Shield, Flame, Award,
+  GraduationCap, BookOpen, Brain, Sparkles
 } from "lucide-react";
 import { MOCK_LEADERBOARD, type LeaderboardEntry } from "@/components/leaderboard/Leaderboard";
 
@@ -34,6 +35,22 @@ const UPCOMING_EVENTS = [
   { id: "1", name: "Weekly Tournament", type: "Battle", prize: "5,000 $LIT", date: "Every Sunday", status: "upcoming" },
   { id: "2", name: "Monthly Championship", type: "Quest", prize: "25,000 $LIT", date: "May 15, 2026", status: "upcoming" },
   { id: "3", name: "Campus Cup", type: "Guild", prize: "50,000 $LIT + NFT", date: "June 1, 2026", status: "upcoming" },
+];
+
+const CAMPUS_PRIDE_BADGES = [
+  { id: "pioneer", name: "Pioneer", icon: "🌟", description: "First 100 members", color: "bg-yellow-500/20" },
+  { id: "scholar", name: "Scholar", icon: "📚", description: "100% quiz accuracy", color: "bg-blue-500/20" },
+  { id: "warrior", name: "Warrior", icon: "⚔️", description: "Win 50 battles", color: "bg-red-500/20" },
+  { id: "united", name: "United", icon: "🤝", description: "Full guild participation", color: "bg-green-500/20" },
+  { id: "streak", name: "Streak Master", icon: "🔥", description: "30 day streak", color: "bg-orange-500/20" },
+  { id: "mentor", name: "Mentor", icon: "🎓", description: "Help 10 new players", color: "bg-purple-500/20" },
+];
+
+const CAMPUS_STATS = [
+  { label: "Total Players", value: "2,547", icon: Users, color: "text-cyan-400" },
+  { label: "Active Guilds", value: "52", icon: GraduationCap, color: "text-purple-400" },
+  { label: "Questions Answered", value: "89,432", icon: BookOpen, color: "text-green-400" },
+  { label: "Battles Won", value: "15,892", icon: Swords, color: "text-red-400" },
 ];
 
 export default function GuildPage() {
@@ -267,6 +284,57 @@ export default function GuildPage() {
           <div className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-full border border-cyan-500/30">
             <Shield className="w-5 h-5 text-cyan-400" />
             <span className="text-cyan-400 font-medium">Join 500+ Players from 50+ Universities</span>
+          </div>
+        </motion.div>
+
+        {/* Campus Pride Stats */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="mt-12"
+        >
+          <h2 className="text-2xl font-bold text-light-100 text-center mb-8 flex items-center justify-center gap-3">
+            <Award className="w-6 h-6 text-yellow-400" />
+            Campus Pride
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            {CAMPUS_STATS.map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 + index * 0.1 }}
+                className="bg-dark-900/50 backdrop-blur-lg rounded-xl border border-dark-700/50 p-4 text-center"
+              >
+                <stat.icon className={`w-6 h-6 mx-auto mb-2 ${stat.color}`} />
+                <div className="text-2xl font-bold text-light-100">{stat.value}</div>
+                <div className="text-sm text-dark-400">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+          
+          {/* Badges */}
+          <div className="bg-dark-900/30 rounded-2xl p-6 border border-dark-700/30 batik-parang">
+            <h3 className="text-lg font-semibold text-light-100 mb-4 flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-yellow-400" />
+              Available Badges
+            </h3>
+            <div className="flex flex-wrap justify-center gap-3">
+              {CAMPUS_PRIDE_BADGES.map((badge, index) => (
+                <motion.div
+                  key={badge.id}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8 + index * 0.05 }}
+                  className={`${badge.color} rounded-xl p-3 text-center border border-white/10 cursor-pointer hover:scale-105 transition-transform`}
+                >
+                  <div className="text-3xl mb-1">{badge.icon}</div>
+                  <div className="text-sm font-medium text-light-100">{badge.name}</div>
+                  <div className="text-xs text-dark-400">{badge.description}</div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.div>
       </div>

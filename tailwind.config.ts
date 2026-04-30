@@ -60,6 +60,7 @@ const config: Config = {
         "spin-slow": "spin 8s linear infinite",
         "gradient-shift": "gradient-shift 8s ease infinite",
         "particle-float": "particle-float 4s ease-in-out infinite",
+        "screen-shake": "screen-shake 0.3s ease-in-out",
       },
       keyframes: {
         float: {
@@ -88,6 +89,17 @@ const config: Config = {
           "0%": { transform: "translateY(0) rotate(0deg)", opacity: "1" },
           "100%": { transform: "translateY(-100px) rotate(360deg)", opacity: "0" },
         },
+        "screen-shake": {
+          "0%, 100%": { transform: "translate(0, 0)" },
+          "10%": { transform: "translate(-5px, -5px)" },
+          "20%": { transform: "translate(5px, -5px)" },
+          "30%": { transform: "translate(-5px, 5px)" },
+          "40%": { transform: "translate(5px, 5px)" },
+          "50%": { transform: "translate(-3px, -3px)" },
+          "60%": { transform: "translate(3px, -3px)" },
+          "70%": { transform: "translate(-2px, 2px)" },
+          "80%": { transform: "translate(2px, 2px)" },
+        },
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -97,6 +109,15 @@ const config: Config = {
       },
       backgroundSize: {
         "300%": "300%",
+      },
+      boxShadow: {
+        "neon-cyan": "0 0 20px rgba(0,245,212,0.5), 0 0 40px rgba(0,245,212,0.3)",
+        "neon-pink": "0 0 20px rgba(255,0,110,0.5), 0 0 40px rgba(255,0,110,0.3)",
+        "neon-purple": "0 0 20px rgba(131,56,236,0.5), 0 0 40px rgba(131,56,236,0.3)",
+        "neon-glow": "0 0 15px var(--neon-color, #00F5D4), 0 0 30px var(--neon-color, #00F5D4), 0 0 45px var(--neon-color, #00F5D4)",
+      },
+      backdropBlur: {
+        "xs": "2px",
       },
     },
   },

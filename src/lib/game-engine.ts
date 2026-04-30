@@ -3,6 +3,7 @@
 import { useEffect, useRef, useCallback, useState } from "react";
 import * as Phaser from "phaser";
 import type { CharacterConfig, ViceMonster } from "@/data/characters";
+import { getElementalMultiplier, ELEMENT_COLORS, Element } from "@/data/characters";
 import type { Quest, QuizQuestion } from "@/data/quests";
 
 interface GameSceneCallbacks {
@@ -239,16 +240,33 @@ class BattleScene extends Phaser.Scene {
     
     // Calculate damage based on stats
     const baseDamage = 25 + Math.floor(this.playerGuardian.stats.attack / 4);
-    const damage = baseDamage + Math.floor(Math.random() * 20);
+    
+    // Apply elemental advantage multiplier
+    let elementalMultiplier = 1.0;
+    let effectivenessText = "";
+    if (this.currentEnemy && this.playerGuardian) {
+      const playerElement = this.playerGuardian.element as unknown as Element;
+      const enemyElement = this.currentEnemy.element as unknown as Element;
+      elementalMultiplier = getElementalMultiplier(playerElement, enemyElement);
+      
+      if (elementalMultiplier > 1) {
+        effectivenessText = " (SUPER!)";
+      } else if (elementalMultiplier < 1) {
+        effectivenessText = " (WEAK)";
+      }
+    }
+    
+    const damage = Math.floor((baseDamage + Math.floor(Math.random() * 20)) * elementalMultiplier);
     
     this.enemyHealth = Math.max(0, this.enemyHealth - damage);
     
     // Show damage text
     const { centerX, centerY } = this.cameras.main;
-    const damageText = this.add.text(centerX + 150, centerY - 80, `-${damage}`, {
+    const damageColor = effectivenessText === " (SUPER!)" ? "#FFBE0B" : effectivenessText === " (WEAK)" ? "#A0A0B0" : "#00F5D4";
+    const damageText = this.add.text(centerX + 150, centerY - 80, `-${damage}${effectivenessText}`, {
       fontFamily: "Bricolage Grotesque",
-      fontSize: "32px",
-      color: "#00F5D4",
+      fontSize: "28px",
+      color: damageColor,
       fontStyle: "bold",
     }).setOrigin(0.5);
     
@@ -259,6 +277,12 @@ class BattleScene extends Phaser.Scene {
       duration: 1000,
       onComplete: () => damageText.destroy(),
     });
+    
+    // Screen shake on hit
+    this.cameras.main.shake(200, 0.01);
+    
+    // Particle burst effect
+    this.createHitParticles(centerX + 150, centerY - 80, this.playerGuardian?.color || "#00F5D4");
     
     this.isPlayerTurn = false;
     
@@ -338,6 +362,27 @@ class BattleScene extends Phaser.Scene {
     continueBtn.on("pointerdown", () => {
       this.scene.start("MainMenuScene");
     });
+  }
+  
+  private createHitParticles(x: number, y: number, color: string) {
+    const colorInt = parseInt(color.replace("#", "0x"));
+    for (let i = 0; i < 12; i++) {
+      const particle = this.add.circle(
+        x + (Math.random() - 0.5) * 30,
+        y + (Math.random() - 0.5) * 30,
+        4,
+        colorInt
+      );
+      this.tweens.add({
+        targets: particle,
+        x: x + (Math.random() - 0.5) * 100,
+        y: y + (Math.random() - 0.5) * 100,
+        alpha: 0,
+        scale: 0,
+        duration: 500,
+        onComplete: () => particle.destroy(),
+      });
+    }
   }
 }
 
