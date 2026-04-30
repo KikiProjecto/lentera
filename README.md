@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <strong>We are witnessing Our Lentera</strong>
+  <strong>We are witnessing Our Lentera 🪔</strong>
 </p>
 
 ---
