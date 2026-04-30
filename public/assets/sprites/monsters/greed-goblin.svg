@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="greedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EA580C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C2410C;stop-opacity:1" />
+    </linearGradient>
+    <filter id="greedGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Body -->
+  <ellipse cx="64" cy="80" rx="28" ry="32" fill="url(#greedGrad)" filter="url(#greedGlow)"/>
+  <!-- Head -->
+  <circle cx="64" cy="45" r="20" fill="#EA580C"/>
+  <!-- Ears -->
+  <ellipse cx="40" cy="40" rx="8" ry="12" fill="#C2410C" transform="rotate(-20 40 40)"/>
+  <ellipse cx="88" cy="40" rx="8" ry="12" fill="#C2410C" transform="rotate(20 88 40)"/>
+  <!-- Coin eyes -->
+  <circle cx="54" cy="43" r="10" fill="#FCD34D"/>
+  <circle cx="74" cy="43" r="10" fill="#FCD34D"/>
+  <circle cx="54" cy="43" r="7" fill="#F59E0B"/>
+  <circle cx="74" cy="43" r="7" fill="#F59E0B"/>
+  <text x="54" y="46" font-size="8" fill="#FCD34D" text-anchor="middle">$</text>
+  <text x="74" y="46" font-size="8" fill="#FCD34D" text-anchor="middle">$</text>
+  <!-- Nose -->
+  <ellipse cx="64" cy="52" rx="5" ry="4" fill="#C2410C"/>
+  <!-- Greedy smile -->
+  <path d="M54 58 Q64 68 74 58" stroke="#0A0A0F" stroke-width="2" fill="none"/>
+  <rect x="52" y="58" width="4" height="6" fill="#FFFFFF"/>
+  <rect x="58" y="59" width="4" height="5" fill="#FFFFFF"/>
+  <rect x="64" y="59" width="4" height="5" fill="#FFFFFF"/>
+  <rect x="70" y="58" width="4" height="6" fill="#FFFFFF"/>
+  <!-- Arms holding gold -->
+  <ellipse cx="30" cy="75" rx="10" ry="15" fill="#C2410C"/>
+  <ellipse cx="98" cy="75" rx="10" ry="15" fill="#C2410C"/>
+  <!-- Gold coins -->
+  <circle cx="28" cy="65" r="8" fill="#FCD34D"/>
+  <circle cx="26" cy="68" r="7" fill="#FCD34D"/>
+  <circle cx="100" cy="65" r="8" fill="#FCD34D"/>
+  <circle cx="102" cy="68" r="7" fill="#FCD34D"/>
+  <!-- Sparkles -->
+  <circle cx="30" cy="60" r="2" fill="#FFBE0B"/>
+  <circle cx="98" cy="60" r="2" fill="#FFBE0B"/>
+  <!-- Glow -->
+  <ellipse cx="64" cy="95" rx="40" ry="12" fill="#EA580C" opacity="0.2"/>
+</svg>

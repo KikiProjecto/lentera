@@ -1,0 +1,121 @@
+{
+  "version": "0.1.0",
+  "name": "lentera",
+  "instructions": [
+    {
+      "name": "initializeGameState",
+      "accounts": [
+        { "name": "gameState", "isMut": true, "isSigner": false },
+        { "name": "tokenMint", "isMut": true, "isSigner": false },
+        { "name": "rewardsVault", "isMut": true, "isSigner": false },
+        { "name": "authority", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": []
+    },
+    {
+      "name": "initializePlayer",
+      "accounts": [
+        { "name": "player", "isMut": true, "isSigner": false },
+        { "name": "gameState", "isMut": true, "isSigner": false },
+        { "name": "authority", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [{ "name": "username", "type": "string" }]
+    },
+    {
+      "name": "claimBattleReward",
+      "accounts": [
+        { "name": "player", "isMut": true, "isSigner": false },
+        { "name": "gameState", "isMut": true, "isSigner": false },
+        { "name": "rewardsVault", "isMut": true, "isSigner": false },
+        { "name": "playerTokenAccount", "isMut": true, "isSigner": false },
+        { "name": "tokenMint", "isMut": false, "isSigner": false },
+        { "name": "authority", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false },
+        { "name": "tokenProgram", "isMut": false, "isSigner": false },
+        { "name": "associatedTokenProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [{ "name": "amount", "type": "u64" }]
+    },
+    {
+      "name": "addXp",
+      "accounts": [
+        { "name": "player", "isMut": true, "isSigner": false }
+      ],
+      "args": [{ "name": "amount", "type": "u64" }]
+    },
+    {
+      "name": "updateStreak",
+      "accounts": [
+        { "name": "player", "isMut": true, "isSigner": false }
+      ],
+      "args": [{ "name": "increment", "type": "bool" }]
+    },
+    {
+      "name": "mintGuardianNft",
+      "accounts": [
+        { "name": "player", "isMut": true, "isSigner": false },
+        { "name": "authority", "isMut": true, "isSigner": true },
+        { "name": "systemProgram", "isMut": false, "isSigner": false }
+      ],
+      "args": [
+        { "name": "guardianId", "type": "u8" },
+        { "name": "name", "type": "string" }
+      ]
+    },
+    {
+      "name": "unlockAchievement",
+      "accounts": [
+        { "name": "player", "isMut": true, "isSigner": false },
+        { "name": "authority", "isMut": true, "isSigner": true }
+      ],
+      "args": [{ "name": "achievementId", "type": "string" }]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GameState",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "authority", "type": "publicKey" },
+          { "name": "tokenMint", "type": "publicKey" },
+          { "name": "rewardsVault", "type": "publicKey" },
+          { "name": "totalPlayers", "type": "u32" },
+          { "name": "totalRewardsDistributed", "type": "u64" },
+          { "name": "bump", "type": "u8" }
+        ]
+      }
+    },
+    {
+      "name": "Player",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "authority", "type": "publicKey" },
+          { "name": "username", "type": "string" },
+          { "name": "level", "type": "u32" },
+          { "name": "xp", "type": "u64" },
+          { "name": "tokens", "type": "u64" },
+          { "name": "streak", "type": "u32" },
+          { "name": "longestStreak", "type": "u32" },
+          { "name": "guardians", "type": { "kind": "vec", "inner": { "name": "Guardian", "type": { "kind": "struct", "fields": [{ "name": "id", "type": "u8" }, { "name": "name", "type": "string" }, { "name": "level", "type": "u32" }, { "name": "experience", "type": "u64" }] } } },
+          { "name": "achievements", "type": { "kind": "vec", "inner": { "name": "Achievement", "type": { "kind": "struct", "fields": [{ "name": "id", "type": "string" }, { "name": "unlockedAt", "type": "i64" }] } } },
+          { "name": "lastPlayedAt", "type": "i64" },
+          { "name": "createdAt", "type": "i64" },
+          { "name": "bump", "type": "u8" }
+        ]
+      }
+    }
+  ],
+  "events": [],
+  "errors": [
+    { "code": 6000, "msg": "Invalid amount" },
+    { "code": 6001, "msg": "Max guardians reached" },
+    { "code": 6002, "msg": "Achievement already unlocked" },
+    { "code": 6003, "msg": "Invalid guardian ID" },
+    { "code": 6004, "msg": "Insufficient tokens" }
+  ]
+}

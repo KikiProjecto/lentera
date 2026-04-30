@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="komodoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2DD4BF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0D9488;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- Body -->
+  <ellipse cx="64" cy="70" rx="35" ry="28" fill="url(#komodoGrad)" filter="url(#glow)"/>
+  <!-- Head -->
+  <ellipse cx="64" cy="42" rx="20" ry="16" fill="#2DD4BF"/>
+  <!-- Eyes -->
+  <circle cx="56" cy="38" r="4" fill="#0A0A0F"/>
+  <circle cx="72" cy="38" r="4" fill="#0A0A0F"/>
+  <circle cx="57" cy="37" r="1.5" fill="#00F5D4"/>
+  <circle cx="73" cy="37" r="1.5" fill="#00F5D4"/>
+  <!-- Spikes -->
+  <path d="M44 55 L40 45 L48 52 Z" fill="#0D9488"/>
+  <path d="M84 55 L88 45 L80 52 Z" fill="#0D9488"/>
+  <path d="M64 35 L64 25 L66 35 Z" fill="#0D9488"/>
+  <!-- Tail -->
+  <path d="M85 75 Q105 70 110 85 Q95 80 85 85" fill="#2DD4BF" opacity="0.8"/>
+  <!-- Glow effect -->
+  <ellipse cx="64" cy="85" rx="40" ry="10" fill="#2DD4BF" opacity="0.2"/>
+</svg>

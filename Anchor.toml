@@ -1,0 +1,22 @@
+[toolchain]
+anchor = "0.30.1"
+rust = "1.75.0"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[programs.devnet]
+lentera = "Lentera1111111111111111111111111111111"
+
+[programs.localnet]
+lentera = "Lentera1111111111111111111111111111111"
+
+[registry]
+url = "https://api.apr.dev"
+
+[test]
+start_wait = 10
+
+[test.validator]
+url = "https://api.devnet.solana.com"

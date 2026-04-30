@@ -63,6 +63,7 @@ export interface ViceMonster {
   attackPattern: string;
   weakness: string;
   element: Element;
+  sprite: string;
   reward: {
     tokens: number;
     xp: number;
@@ -99,10 +100,10 @@ export const GUARDIANS: CharacterConfig[] = [
     origin: "Pulau Komodo, Nusa Tenggara Timur",
     element: "earth",
     sprites: {
-      idle: "/assets/sprites/guardians/komodo-idle.png",
-      attack: "/assets/sprites/guardians/komodo-attack.png",
-      hurt: "/assets/sprites/guardians/komodo-hurt.png",
-      victory: "/assets/sprites/guardians/komodo-victory.png",
+      idle: "/assets/sprites/guardians/komodo-idle.svg",
+      attack: "/assets/sprites/guardians/komodo-idle.svg",
+      hurt: "/assets/sprites/guardians/komodo-idle.svg",
+      victory: "/assets/sprites/guardians/komodo-idle.svg",
     },
     skins: [
       { id: "komodo-default", name: "Default", description: "Tampilan default Komodo", colorTheme: { primary: "#2DD4BF", secondary: "#0D9488", accent: "#5EEAD4" }, price: 0, unlockRequirement: "Starter", isLimited: false },
@@ -133,10 +134,10 @@ export const GUARDIANS: CharacterConfig[] = [
     origin: "Keraton Yogyakarta",
     element: "void",
     sprites: {
-      idle: "/assets/sprites/guardians/owl-idle.png",
-      attack: "/assets/sprites/guardians/owl-attack.png",
-      hurt: "/assets/sprites/guardians/owl-hurt.png",
-      victory: "/assets/sprites/guardians/owl-victory.png",
+      idle: "/assets/sprites/guardians/owl-idle.svg",
+      attack: "/assets/sprites/guardians/owl-idle.svg",
+      hurt: "/assets/sprites/guardians/owl-idle.svg",
+      victory: "/assets/sprites/guardians/owl-idle.svg",
     },
     skins: [
       { id: "owl-default", name: "Default", description: "Tampilan default Wayang Owl", colorTheme: { primary: "#A78BFA", secondary: "#7C3AED", accent: "#C4B5FD" }, price: 0, unlockRequirement: "Starter", isLimited: false },
@@ -167,10 +168,10 @@ export const GUARDIANS: CharacterConfig[] = [
     origin: "Taman Nasional Tanjung Puting",
     element: "air",
     sprites: {
-      idle: "/assets/sprites/guardians/orangutan-idle.png",
-      attack: "/assets/sprites/guardians/orangutan-attack.png",
-      hurt: "/assets/sprites/guardians/orangutan-hurt.png",
-      victory: "/assets/sprites/guardians/orangutan-victory.png",
+      idle: "/assets/sprites/guardians/orangutan-idle.svg",
+      attack: "/assets/sprites/guardians/orangutan-idle.svg",
+      hurt: "/assets/sprites/guardians/orangutan-idle.svg",
+      victory: "/assets/sprites/guardians/orangutan-idle.svg",
     },
     skins: [
       { id: "orangutan-default", name: "Default", description: "Tampilan default Orangutan", colorTheme: { primary: "#F59E0B", secondary: "#D97706", accent: "#FCD34D" }, price: 0, unlockRequirement: "Starter", isLimited: false },
@@ -200,10 +201,10 @@ export const GUARDIANS: CharacterConfig[] = [
     origin: "Pelangi Nusantara",
     element: "water",
     sprites: {
-      idle: "/assets/sprites/guardians/prism-idle.png",
-      attack: "/assets/sprites/guardians/prism-attack.png",
-      hurt: "/assets/sprites/guardians/prism-hurt.png",
-      victory: "/assets/sprites/guardians/prism-victory.png",
+      idle: "/assets/sprites/guardians/prism-idle.svg",
+      attack: "/assets/sprites/guardians/prism-idle.svg",
+      hurt: "/assets/sprites/guardians/prism-idle.svg",
+      victory: "/assets/sprites/guardians/prism-idle.svg",
     },
     skins: [
       { id: "prism-default", name: "Default", description: "Tampilan default Prisma", colorTheme: { primary: "#06B6D4", secondary: "#0891B2", accent: "#22D3EE" }, price: 0, unlockRequirement: "Starter", isLimited: false },
@@ -232,10 +233,10 @@ export const GUARDIANS: CharacterConfig[] = [
     origin: "Gunung Merapi",
     element: "fire",
     sprites: {
-      idle: "/assets/sprites/guardians/flame-idle.png",
-      attack: "/assets/sprites/guardians/flame-attack.png",
-      hurt: "/assets/sprites/guardians/flame-hurt.png",
-      victory: "/assets/sprites/guardians/flame-victory.png",
+      idle: "/assets/sprites/guardians/flame-idle.svg",
+      attack: "/assets/sprites/guardians/flame-idle.svg",
+      hurt: "/assets/sprites/guardians/flame-idle.svg",
+      victory: "/assets/sprites/guardians/flame-idle.svg",
     },
     skins: [
       { id: "flame-default", name: "Default", description: "Tampilan default Api", colorTheme: { primary: "#EF4444", secondary: "#DC2626", accent: "#FCA5A5" }, price: 0, unlockRequirement: "Starter", isLimited: false },
@@ -258,6 +259,7 @@ export const VICE_MONSTERS: ViceMonster[] = [
     attackPattern: "slot-spin-attack",
     weakness: "kebanyakan",
     element: "void",
+    sprite: "/assets/sprites/monsters/slot-goblin.svg",
     reward: { tokens: 10, xp: 50 },
     appearance: { shape: "siren-mermaid", features: [" mata memancarkan slots", "ekor seperti mesin slot", "suara yang magnetis"], animation: "spin-attract" },
   },
@@ -274,6 +276,7 @@ export const VICE_MONSTERS: ViceMonster[] = [
     attackPattern: "rug-pull",
     weakness: "due diligence",
     element: "void",
+    sprite: "/assets/sprites/monsters/rugpull-demon.svg",
     reward: { tokens: 25, xp: 100, item: "Research Lens" },
     appearance: { shape: "demon-cloaked", features: [" mata merah menyala", "tangan yang menarik", "tersenyum jahat"], animation: "fade-away" },
   },
@@ -290,6 +293,7 @@ export const VICE_MONSTERS: ViceMonster[] = [
     attackPattern: "fast-attack-fomo",
     weakness: "kesabaran",
     element: "void",
+    sprite: "/assets/sprites/monsters/fomo-ghost.svg",
     reward: { tokens: 20, xp: 75 },
     appearance: { shape: "ghost-transparent", features: ["tubuh transparan", "wajah ketakutan", " aura pink"], animation: "flash-appear" },
   },
@@ -306,6 +310,7 @@ export const VICE_MONSTERS: ViceMonster[] = [
     attackPattern: "gold-steal",
     weakness: "kedermawanan",
     element: "earth",
+    sprite: "/assets/sprites/monsters/greed-goblin.svg",
     reward: { tokens: 50, xp: 150 },
     appearance: { shape: "goblin-small", features: ["mata kuning seperti koin", "tangan besar", "harta berlimpah"], animation: "gold-shine" },
   },
