@@ -241,18 +241,6 @@ lentera/
 
 ---
 
-## Contributing
-
-We warmly welcome contributions from developers worldwide!
-
-1. Fork the repository to your GitHub account
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes with descriptive messages (`git commit -m 'Add AmazingFeature'`)
-4. Push your branch to your fork (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request describing your improvements
-
----
-
 ## License
 
 This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for complete details.
