@@ -1,15 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import { GUARDIANS } from "@/data/characters";
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
+import { QUESTS, type Quest } from "@/data/quests";
+import QuestModal from "@/components/quest/QuestModal";
+import { WalletButton } from "@/components/wallet/WalletButton";
 import { 
   Wallet, Zap, Flame, Trophy, 
   Users, Calendar, Gift,
   ChevronRight, Star, Shield,
-  Play, Target, Crown
+  Play, Target, Crown, Clock, BookOpen
 } from "lucide-react";
 
 interface UserStats {
@@ -22,7 +25,8 @@ interface UserStats {
 }
 
 export default function DashboardPage() {
-  const [userStats] = useState<UserStats>({
+  const router = useRouter();
+  const [userStats, setUserStats] = useState<UserStats>({
     level: 5,
     xp: 2450,
     tokens: 1250,
@@ -30,12 +34,41 @@ export default function DashboardPage() {
     wins: 42,
     guild: "UGM Warriors",
   });
+  const [completedQuests, setCompletedQuests] = useState<string[]>(["budget-challenge"]);
+  const [activeQuest, setActiveQuest] = useState<Quest | null>(null);
+  const [isQuestModalOpen, setIsQuestModalOpen] = useState(false);
 
-  const weeklyQuests = [
-    { id: 1, title: "Quiz Spending Habits", progress: 80, reward: 50, completed: false },
-    { id: 2, title: "Budget Challenge", progress: 100, reward: 100, completed: true },
-    { id: 3, title: "Anti-Scam Quiz", progress: 50, reward: 75, completed: false },
-  ];
+  const availableQuests = QUESTS.filter(q => !completedQuests.includes(q.id)).slice(0, 3);
+  const dailyQuests = availableQuests.map(quest => ({
+    id: quest.id,
+    title: quest.title,
+    progress: 0,
+    reward: quest.rewards.tokens,
+    completed: completedQuests.includes(quest.id),
+    difficulty: quest.difficulty,
+    timeLimit: quest.timeLimit,
+  }));
+
+  const handleQuestClick = (questId: string) => {
+    const quest = QUESTS.find(q => q.id === questId);
+    if (quest) {
+      setActiveQuest(quest);
+      setIsQuestModalOpen(true);
+    }
+  };
+
+  const handleQuestComplete = (rewards: { tokens: number; xp: number }) => {
+    if (activeQuest) {
+      setCompletedQuests(prev => [...prev, activeQuest.id]);
+      setUserStats(prev => ({
+        ...prev,
+        tokens: prev.tokens + rewards.tokens,
+        xp: prev.xp + rewards.xp,
+      }));
+    }
+    setIsQuestModalOpen(false);
+    setActiveQuest(null);
+  };
 
   return (
     <div className="min-h-screen py-8 px-4">
@@ -52,7 +85,7 @@ export default function DashboardPage() {
             </h1>
             <p className="text-light-400">Welcome back, Guardian!</p>
           </div>
-          <WalletMultiButton className="!bg-dark-800 !border-neon-cyan/30 !text-neon-cyan" />
+          <WalletButton />
         </motion.div>
 
         {/* Stats Overview */}
@@ -119,43 +152,49 @@ export default function DashboardPage() {
             </div>
 
             <div className="space-y-3">
-              {weeklyQuests.map((quest, index) => (
+              {dailyQuests.map((quest, index) => (
                 <motion.div
                   key={quest.id}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 + index * 0.1 }}
-                  className={`quest-item ${quest.completed ? 'border-neon-cyan/30' : ''}`}
+                  className={`quest-item ${quest.completed ? 'border-neon-cyan/30' : ''} cursor-pointer`}
+                  onClick={() => !quest.completed && handleQuestClick(quest.id)}
                 >
                   <div 
                     className={`w-12 h-12 rounded-xl flex items-center justify-center ${
                       quest.completed 
                         ? 'bg-neon-cyan/20' 
-                        : 'bg-dark-700'
+                        : quest.difficulty === 1 ? 'bg-guardian-komodo/20' :
+                          quest.difficulty === 2 ? 'bg-neon-purple/20' : 'bg-vice-slot/20'
                     }`}
                   >
                     {quest.completed ? (
                       <Shield className="w-6 h-6 text-neon-cyan" />
                     ) : (
-                      <Target className="w-6 h-6 text-light-400" />
+                      <BookOpen className={`w-6 h-6 ${
+                        quest.difficulty === 1 ? 'text-guardian-komodo' :
+                          quest.difficulty === 2 ? 'text-neon-purple' : 'text-vice-slot'
+                      }`} />
                     )}
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-semibold text-light-100">{quest.title}</h4>
                     <div className="flex items-center gap-4 mt-1">
-                      <div className="flex-1 h-2 bg-dark-700 rounded-full overflow-hidden">
-                        <motion.div
-                          className="h-full rounded-full bg-gradient-to-r from-neon-cyan to-neon-pink"
-                          initial={{ width: 0 }}
-                          animate={{ width: `${quest.progress}%` }}
-                          transition={{ delay: 0.5, duration: 0.5 }}
-                        />
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-3 h-3 text-light-400" />
+                        <span className="text-light-400 text-xs">{quest.timeLimit / 60} min</span>
                       </div>
-                      <span className="text-neon-cyan text-sm font-semibold shrink-0">
-                        +{quest.reward} $LIT
+                      <span className={`text-sm font-semibold ${
+                        quest.completed ? 'text-neon-cyan' : 'text-neon-yellow'
+                      }`}>
+                        {quest.completed ? '✓ Selesai' : `+${quest.reward} $LIT`}
                       </span>
                     </div>
                   </div>
+                  {!quest.completed && (
+                    <ChevronRight className="w-5 h-5 text-light-400" />
+                  )}
                 </motion.div>
               ))}
             </div>
@@ -168,6 +207,7 @@ export default function DashboardPage() {
               <motion.div
                 whileHover={{ scale: 1.02 }}
                 className="glass-panel p-6 rounded-xl cursor-pointer group"
+                onClick={() => router.push("/game")}
               >
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-neon-cyan to-neon-purple flex items-center justify-center">
@@ -284,6 +324,16 @@ export default function DashboardPage() {
           </motion.div>
         </div>
       </div>
+
+      <QuestModal
+        quest={activeQuest}
+        isOpen={isQuestModalOpen}
+        onClose={() => {
+          setIsQuestModalOpen(false);
+          setActiveQuest(null);
+        }}
+        onComplete={handleQuestComplete}
+      />
     </div>
   );
 }

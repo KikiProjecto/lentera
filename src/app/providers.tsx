@@ -5,6 +5,9 @@ import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react
 import { PhantomWalletAdapter } from "@solana/wallet-adapter-phantom";
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import "@solana/wallet-adapter-react-ui/styles.css";
+import { GameProvider } from "@/lib/game-state";
+import { SolanaRewardsProvider } from "@/lib/solana-rewards";
+import { GameOverlay } from "@/components/game/GameOverlay";
 
 const RPC_ENDPOINT = process.env.NEXT_PUBLIC_RPC_ENDPOINT || "https://api.mainnet-beta.solana.com";
 
@@ -14,7 +17,15 @@ export function Providers({ children }: { children: ReactNode }) {
   return (
     <ConnectionProvider endpoint={RPC_ENDPOINT}>
       <WalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>{children}</WalletModalProvider>
+        <WalletModalProvider>
+          <GameProvider>
+            <SolanaRewardsProvider>
+              <GameOverlay>
+                {children}
+              </GameOverlay>
+            </SolanaRewardsProvider>
+          </GameProvider>
+        </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
   );

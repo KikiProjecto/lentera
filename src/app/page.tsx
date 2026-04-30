@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { useWallet } from "@solana/wallet-adapter-react";
 import Button from "@/components/ui/Button";
 import CharacterCard from "@/components/characters/CharacterCard";
+import { WalletButton } from "@/components/wallet/WalletButton";
 import { GUARDIANS, VICE_MONSTERS } from "@/data/characters";
 import { 
   Zap, Shield, Flame, 
@@ -30,8 +33,18 @@ const itemVariants = {
 };
 
 export default function HomePage() {
+  const router = useRouter();
+  const { connected } = useWallet();
   const [selectedCharacter, setSelectedCharacter] = useState(GUARDIANS[0]);
   const [activeTab, setActiveTab] = useState<"guardians" | "vice">("guardians");
+
+  const handleStartAdventure = () => {
+    if (connected) {
+      router.push("/game");
+    } else {
+      router.push("/dashboard");
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -122,15 +135,14 @@ export default function HomePage() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
           >
-            <Button size="xl" className="group">
+            <Button size="xl" className="group" onClick={handleStartAdventure}>
               <Play className="w-6 h-6 group-hover:scale-110 transition-transform" />
               Mulai Petualangan
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="secondary" size="xl">
-              <Wallet className="w-5 h-5" />
-              Connect Wallet
-            </Button>
+            <div className="flex items-center">
+              <WalletButton />
+            </div>
           </motion.div>
 
           {/* Stats */}

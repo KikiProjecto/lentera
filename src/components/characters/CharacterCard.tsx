@@ -1,289 +1,200 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CharacterConfig, RARITY_COLORS } from "@/data/characters";
-import { clsx } from "clsx";
-import { Shield, Zap, Heart, Brain, Sparkles, Flame, Droplets, Wind, Globe, Star } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { CharacterConfig } from "@/data/characters";
+import { Shield, Zap, Swords, Brain, Sparkles, Star } from "lucide-react";
 
 interface CharacterCardProps {
   character: CharacterConfig;
-  variant?: "compact" | "full" | "battle";
   isSelected?: boolean;
   onSelect?: (character: CharacterConfig) => void;
   showStats?: boolean;
-  className?: string;
+  size?: "sm" | "md" | "lg";
+  rarity?: "common" | "rare" | "epic" | "legendary" | "mythic";
+  variant?: "compact" | "full" | "minimal";
 }
 
-const ELEMENT_ICONS = {
-  light: Star,
-  fire: Flame,
-  water: Droplets,
-  earth: Globe,
-  air: Wind,
-  void: Sparkles,
-};
-
 const STAT_ICONS = {
-  attack: Zap,
+  attack: Swords,
   defense: Shield,
-  speed: Wind,
+  speed: Zap,
   wisdom: Brain,
   charisma: Sparkles,
 };
 
+const STAT_COLORS = {
+  attack: "text-red-400",
+  defense: "text-blue-400",
+  speed: "text-yellow-400",
+  wisdom: "text-purple-400",
+  charisma: "text-pink-400",
+};
+
+const RARITY_COLORS = {
+  common: "border-slate-500 bg-slate-500/10",
+  rare: "border-blue-500 bg-blue-500/10",
+  epic: "border-purple-500 bg-purple-500/10",
+  legendary: "border-amber-500 bg-amber-500/10",
+  mythic: "border-cyan-500 bg-cyan-500/10",
+};
+
 export default function CharacterCard({
   character,
-  variant = "compact",
-  isSelected,
+  isSelected = false,
   onSelect,
   showStats = true,
-  className,
+  size = "md",
+  rarity,
 }: CharacterCardProps) {
-  const ElementIcon = ELEMENT_ICONS[character.element];
-  const rarityColor = RARITY_COLORS[character.rarity];
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { type: "spring", stiffness: 300, damping: 25 }
-    },
-    hover: { 
-      y: -8,
-      transition: { type: "spring", stiffness: 400, damping: 20 }
-    },
+  const displayRarity = rarity || character.rarity;
+  const sizeClasses = {
+    sm: "w-32",
+    md: "w-48",
+    lg: "w-64",
   };
 
-  const idleAnimation = {
-    y: [0, -8, 0],
-    transition: {
-      duration: character.element === "fire" ? 0.5 : character.element === "air" ? 1.5 : 2,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
-  };
-
-  if (variant === "compact") {
-    return (
+  const StatBar = ({ value, max = 100 }: { value: number; max?: number }) => (
+    <div className="h-2 bg-dark-800 rounded-full overflow-hidden">
       <motion.div
-        variants={containerVariants}
-        whileHover="hover"
-        onClick={() => onSelect?.(character)}
-        className={clsx(
-          "relative p-4 rounded-2xl cursor-pointer transition-all duration-300",
-          "bg-gradient-to-br from-dark-800 to-dark-900 border-2",
-          isSelected 
-            ? "border-neon-cyan shadow-glow-cyan" 
-            : "border-dark-600/50 hover:border-dark-500",
-          className
-        )}
-        style={{
-          boxShadow: isSelected ? `0 0 30px ${character.glowColor}` : undefined,
-        }}
-      >
-        <motion.div animate={idleAnimation as any}>
-          <div 
-            className="w-16 h-16 rounded-xl mb-3 flex items-center justify-center text-4xl"
-            style={{
-              background: `linear-gradient(135deg, ${character.color}20, ${character.secondaryColor}30)`,
-            }}
-          >
-            <motion.span
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", delay: 0.2 }}
-            >
-              {character.element === "earth" ? "🦎" : 
-               character.element === "void" ? "🦉" : 
-               character.element === "air" ? "🦧" : 
-               character.element === "water" ? "💎" : 
-               character.element === "fire" ? "🔥" : "☀️"}
-            </motion.span>
-          </div>
-        </motion.div>
-
-        <div className="space-y-1">
-          <div className="flex items-center gap-2">
-            <h4 className="font-semibold text-light-100 text-sm truncate">{character.name}</h4>
-          </div>
-          <div className="flex items-center gap-2">
-            <span 
-              className="px-2 py-0.5 rounded-full text-xs font-medium"
-              style={{ 
-                backgroundColor: `${rarityColor}20`,
-                color: rarityColor,
-              }}
-            >
-              {character.rarity}
-            </span>
-            <ElementIcon className="w-3 h-3" style={{ color: character.color }} />
-          </div>
-        </div>
-      </motion.div>
-    );
-  }
-
-  if (variant === "battle") {
-    return (
-      <motion.div
-        variants={containerVariants}
-        whileHover="hover"
-        className={clsx(
-          "relative p-6 rounded-3xl",
-          "bg-gradient-to-br from-dark-800 to-dark-900",
-          "border-2 transition-all duration-300",
-          isSelected 
-            ? "border-neon-cyan" 
-            : "border-dark-600/50",
-          className
-        )}
-        style={{
-          boxShadow: isSelected ? `0 0 40px ${character.glowColor}` : `0 10px 40px rgba(0,0,0,0.3)`,
-        }}
-      >
-        <motion.div 
-          className="absolute inset-0 rounded-3xl overflow-hidden"
-          animate={idleAnimation as any}
-        >
-          <div 
-            className="absolute inset-0 opacity-30"
-            style={{
-              background: `radial-gradient(circle at 50% 120%, ${character.color} 0%, transparent 60%)`,
-            }}
-          />
-        </motion.div>
-
-        <div className="relative z-10">
-          <motion.div 
-            className="w-24 h-24 mx-auto mb-4 rounded-2xl flex items-center justify-center text-6xl"
-            style={{
-              background: `linear-gradient(135deg, ${character.color}30, ${character.secondaryColor}20)`,
-              border: `2px solid ${character.color}40`,
-            }}
-            whileHover={{ scale: 1.1 }}
-          >
-            {character.element === "earth" ? "🦎" : 
-             character.element === "void" ? "🦉" : 
-             character.element === "air" ? "🦧" : 
-             character.element === "water" ? "💎" : 
-             character.element === "fire" ? "🔥" : "☀️"}
-          </motion.div>
-
-          <div className="text-center mb-4">
-            <h3 className="font-display text-xl font-bold text-light-100">{character.name}</h3>
-            <p className="text-light-400 text-sm">{character.role}</p>
-          </div>
-
-          {showStats && (
-            <div className="grid grid-cols-5 gap-2 mb-4">
-              {Object.entries(character.stats).map(([stat, value]) => {
-                const StatIcon = STAT_ICONS[stat as keyof typeof STAT_ICONS];
-                return (
-                  <div key={stat} className="text-center">
-                    <div 
-                      className="w-8 h-8 mx-auto rounded-lg flex items-center justify-center mb-1"
-                      style={{ backgroundColor: `${character.color}20` }}
-                    >
-                      <StatIcon className="w-4 h-4" style={{ color: character.color }} />
-                    </div>
-                    <span className="text-xs font-semibold text-light-200">{value}</span>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          <div className="flex flex-wrap gap-2 justify-center">
-            {character.abilities.slice(0, 3).map((ability, index) => (
-              <span 
-                key={index}
-                className="px-3 py-1 rounded-full text-xs font-medium"
-                style={{ 
-                  backgroundColor: `${character.color}20`,
-                  color: character.color,
-                }}
-              >
-                {ability.name}
-              </span>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-    );
-  }
+        className="h-full bg-gradient-to-r from-cyan-500 to-teal-400 rounded-full"
+        initial={{ width: 0 }}
+        animate={{ width: `${(value / max) * 100}%` }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      />
+    </div>
+  );
 
   return (
     <motion.div
-      variants={containerVariants}
-      whileHover="hover"
-      className={clsx(
-        "relative p-6 rounded-2xl",
-        "bg-gradient-to-br from-dark-800 to-dark-900",
-        "border border-dark-600/50",
-        className
+      className={cn(
+        "relative rounded-xl border-2 overflow-hidden cursor-pointer transition-all",
+        sizeClasses[size],
+        isSelected
+          ? "border-cyan-400 shadow-lg shadow-cyan-500/30"
+          : "border-dark-700 hover:border-dark-600 hover:shadow-md",
+        RARITY_COLORS[displayRarity]
       )}
+      onClick={() => onSelect?.(character)}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
     >
-      <div className="flex gap-4">
-        <motion.div 
-          className="w-20 h-20 rounded-xl flex items-center justify-center text-5xl shrink-0"
-          style={{
-            background: `linear-gradient(135deg, ${character.color}20, ${character.secondaryColor}30)`,
-          }}
-          animate={idleAnimation as any}
-        >
-          {character.element === "earth" ? "🦎" : 
-           character.element === "void" ? "🦉" : 
-           character.element === "air" ? "🦧" : 
-           character.element === "water" ? "💎" : 
-           character.element === "fire" ? "🔥" : "☀️"}
-        </motion.div>
+      {/* Background gradient */}
+      <div
+        className="absolute inset-0 opacity-20"
+        style={{
+          background: `linear-gradient(135deg, ${character.color}20 0%, transparent 100%)`,
+        }}
+      />
 
-        <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2 mb-1">
-            <h4 className="font-display font-semibold text-light-100 truncate">{character.name}</h4>
-            <span 
-              className="px-2 py-0.5 rounded-full text-xs font-medium shrink-0"
-              style={{ 
-                backgroundColor: `${rarityColor}20`,
-                color: rarityColor,
-              }}
-            >
-              {character.rarity}
-            </span>
+      {/* Selection indicator */}
+      {isSelected && (
+        <div className="absolute top-2 right-2 z-10">
+          <div className="w-6 h-6 rounded-full bg-cyan-500 flex items-center justify-center">
+            <Star className="w-4 h-4 text-dark-950 fill-current" />
           </div>
-          <p className="text-light-400 text-sm mb-2">{character.role}</p>
-          <p className="text-light-300 text-sm line-clamp-2">{character.description}</p>
+        </div>
+      )}
+
+      {/* Character avatar area */}
+      <div className="relative p-4 pb-2">
+        <div
+          className={cn(
+            "mx-auto rounded-xl flex items-center justify-center",
+            size === "sm" ? "w-20 h-20 text-4xl" : size === "lg" ? "w-32 h-32 text-6xl" : "w-24 h-24 text-5xl"
+          )}
+          style={{
+            background: `linear-gradient(135deg, ${character.color}30, ${character.secondaryColor}30)`,
+            boxShadow: `0 0 20px ${character.glowColor}40`,
+          }}
+        >
+          <span className="filter drop-shadow-lg">{character.nameEn.split(" ")[0][0]}</span>
+        </div>
+
+        {/* Rarity badge */}
+        <div className="absolute bottom-2 left-2">
+          <span
+            className={cn(
+              "text-xs font-medium px-2 py-0.5 rounded-full uppercase",
+              RARITY_COLORS[displayRarity].replace("bg-", "text-").replace("/10", "")
+            )}
+          >
+            {displayRarity}
+          </span>
         </div>
       </div>
 
-      {showStats && (
-        <div className="mt-4 pt-4 border-t border-dark-700/50">
-          <div className="grid grid-cols-5 gap-3">
+      {/* Character info */}
+      <div className="px-4 pb-4 space-y-2">
+        <h3 className="font-bold text-light-100 text-center truncate">{character.name}</h3>
+        <p className="text-xs text-dark-400 text-center">{character.role}</p>
+
+        {/* Stats */}
+        {showStats && (
+          <div className="space-y-1.5 pt-2">
             {Object.entries(character.stats).map(([stat, value]) => {
-              const StatIcon = STAT_ICONS[stat as keyof typeof STAT_ICONS];
-              const percentage = (value / 100) * 100;
+              const Icon = STAT_ICONS[stat as keyof typeof STAT_ICONS];
               return (
-                <div key={stat}>
-                  <div className="flex items-center gap-1 mb-1">
-                    <StatIcon className="w-3 h-3" style={{ color: character.color }} />
-                    <span className="text-xs text-light-400 capitalize">{stat}</span>
-                  </div>
-                  <div className="h-2 bg-dark-700 rounded-full overflow-hidden">
-                    <motion.div 
-                      className="h-full rounded-full"
-                      style={{ backgroundColor: character.color }}
-                      initial={{ width: 0 }}
-                      animate={{ width: `${percentage}%` }}
-                      transition={{ delay: 0.3, duration: 0.5 }}
-                    />
-                  </div>
+                <div key={stat} className="flex items-center gap-2 text-xs">
+                  <Icon className={cn("w-3.5 h-3.5", STAT_COLORS[stat as keyof typeof STAT_COLORS])} />
+                  <span className="text-dark-400 w-16 capitalize">{stat}</span>
+                  <StatBar value={value} />
+                  <span className="text-dark-500 w-6 text-right">{value}</span>
                 </div>
               );
             })}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </motion.div>
+  );
+}
+
+export function CharacterStatRing({ stat, value, max = 100 }: { stat: string; value: number; max?: number }) {
+  const percentage = (value / max) * 100;
+  const circumference = 2 * Math.PI * 36;
+  const offset = circumference - (percentage / 100) * circumference;
+
+  return (
+    <div className="relative w-20 h-20">
+      <svg className="w-20 h-20 transform -rotate-90">
+        {/* Background circle */}
+        <circle
+          cx="40"
+          cy="40"
+          r="36"
+          stroke="currentColor"
+          strokeWidth="4"
+          fill="transparent"
+          className="text-dark-800"
+        />
+        {/* Progress circle */}
+        <motion.circle
+          cx="40"
+          cy="40"
+          r="36"
+          stroke="url(#statGradient)"
+          strokeWidth="4"
+          fill="transparent"
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          initial={{ strokeDashoffset: circumference }}
+          animate={{ strokeDashoffset: offset }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        />
+        <defs>
+          <linearGradient id="statGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#2DD4BF" />
+            <stop offset="100%" stopColor="#14B8A6" />
+          </linearGradient>
+        </defs>
+      </svg>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <span className="text-sm font-bold text-light-100">{value}</span>
+      </div>
+      <span className="absolute -bottom-5 left-1/2 -translate-x-1/2 text-xs text-dark-400 capitalize">
+        {stat}
+      </span>
+    </div>
   );
 }

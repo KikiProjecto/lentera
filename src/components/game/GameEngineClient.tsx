@@ -1,6 +1,7 @@
 "use client";
 
-import { useGameEngine, type GameEngineOptions, type GameState } from "@/lib/game-engine";
+import { useGameEngine, type GameEngineOptions } from "@/lib/game-engine";
+import type { GameState } from "@/lib/game-state";
 import { useMemo } from "react";
 
 export default function GameEngineClient(props: GameEngineOptions) {
