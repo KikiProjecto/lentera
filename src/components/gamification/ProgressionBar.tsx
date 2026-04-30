@@ -36,14 +36,14 @@ export default function ProgressionBar() {
       {/* Level badge */}
       <div className="absolute inset-0 flex items-center justify-between px-3">
         <div className="flex items-center gap-2">
-          <span className="text-xs font-bold text-dark-950 drop-shadow-sm">
+          <span className="text-xs font-bold text-white drop-shadow-md">
             LVL {state.player.level}
           </span>
-          <span className="text-xs text-dark-700">
+          <span className="text-xs text-white/70">
             {currentTier?.badge}
           </span>
         </div>
-        <span className="text-xs font-medium text-dark-950 drop-shadow-sm">
+        <span className="text-xs font-medium text-white drop-shadow-md">
           {current} / {required} XP
         </span>
       </div>
