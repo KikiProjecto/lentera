@@ -68,12 +68,12 @@ Based on official financial intelligence data (2023-2025):
 
 ---
 
-## Current Features
+## Current features
 
-### ✅ Battle Arena
+### Battle Arena
 Select your Guardian character and engage in turn-based battles against vice monsters to earn rewards while learning financial concepts.
 
-### ✅ Daily Quests
+### Daily Quests
 Educational mini-games with 4 categories:
 - Budget Management
 - Saving Habits
@@ -86,13 +86,13 @@ Educational mini-games with 4 categories:
 - XP & Level Progression (10 tiers)
 - Token rewards ($LIT)
 
-### ✅ Campus Competition (Guild System)
+### Campus Competition (Guild System)
 - University-based guild rankings
 - Weekly & Monthly tournaments
 - Campus Cup events
 - Leaderboard system
 
-### ✅ Personal Dashboard
+### Personal Dashboard
 - Player stats and profile
 - Wallet connection
 - Quest tracking
