@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <strong>We are witnessing Our Lentera 🪔</strong>
+  <strong>We are witnessing our Lentera 🪔</strong>
 </p>
 
 ---
@@ -64,7 +64,6 @@ Based on official financial intelligence data (2023-2025):
 - **Next.js 14** — React framework with App Router
 - **TypeScript** — Type safety and development
 - **Tailwind CSS** — Modern styling
-- **Framer Motion** — Smooth animations
 - **Phaser.js** — 2D game engine
 
 ---
