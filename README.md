@@ -241,7 +241,4 @@ lentera/
 ---
 
 
-## Contact me
 
-- **Discord:** [kikiprojecto](https://discordapp.com/users/1125940822446186598)
-- **Telegram:** [KikiProjecto](https://t.me/KikiProjecto)
