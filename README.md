@@ -173,44 +173,7 @@ npm start
 
 ## Project Architecture
 
-```
-lentera/
-├── src/
-│   ├── app/                    # Next.js App Router
-│   │   ├── dashboard/          # Dashboard page
-│   │   ├── game/               # Phaser game page
-│   │   ├── characters/         # Characters page
-│   │   ├── quest/              # Quest system
-│   │   ├── guild/              # Campus competition
-│   │   ├── leaderboard/        # Rankings
-│   │   ├── gallery/            # Gallery
-│   │   ├── settings/           # Settings
-│   │   ├── about/              # About page
-│   │   ├── layout.tsx          # Root layout
-│   │   ├── page.tsx            # Landing page
-│   │   ├── providers.tsx       # Context providers
-│   │   └── globals.css         # Global styles
-│   ├── components/
-│   │   ├── battle/             # Battle UI components
-│   │   ├── gamification/       # Achievements, quests, progression
-│   │   ├── game/               # Game engine & overlay
-│   │   ├── characters/         # Character cards
-│   │   ├── leaderboard/        # Ranking components
-│   │   ├── quest/              # Quest components
-│   │   ├── layout/             # Navbar & layout
-│   │   ├── ui/                 # Reusable UI
-│   │   └── wallet/             # Wallet connection
-│   ├── data/                   # Game data (characters, quests)
-│   └── lib/                    # Utilities & state
-│       ├── game-state.tsx      # Game state management
-│       ├── game-engine.ts      # Phaser integration
-│       ├── gamification.ts     # Achievements & progression
-│       ├── solana-rewards.tsx  # Token rewards
-│       └── ...
-├── public/
-│   ├── manifest.json           # PWA manifest
-│   └── sw.js                   # Service worker
-└── ...
+
 ```
 
 ---
