@@ -182,10 +182,10 @@ lentera/
 │   │   ├── characters/         # Characters page
 │   │   ├── quest/              # Quest system
 │   │   ├── guild/              # Campus competition
-│   │   ├── leaderboard/         # Rankings
+│   │   ├── leaderboard/        # Rankings
 │   │   ├── gallery/            # Gallery
 │   │   ├── settings/           # Settings
-│   │   ├── about/               # About page
+│   │   ├── about/              # About page
 │   │   ├── layout.tsx          # Root layout
 │   │   ├── page.tsx            # Landing page
 │   │   ├── providers.tsx       # Context providers
@@ -194,8 +194,8 @@ lentera/
 │   │   ├── battle/             # Battle UI components
 │   │   ├── gamification/       # Achievements, quests, progression
 │   │   ├── game/               # Game engine & overlay
-│   │   ├── characters/          # Character cards
-│   │   ├── leaderboard/         # Ranking components
+│   │   ├── characters/         # Character cards
+│   │   ├── leaderboard/        # Ranking components
 │   │   ├── quest/              # Quest components
 │   │   ├── layout/             # Navbar & layout
 │   │   ├── ui/                 # Reusable UI
@@ -217,14 +217,14 @@ lentera/
 
 ## Development Roadmap
 
-### Phase 1: Minimum Viable Product ✅ COMPLETE
+### Phase 1: Minimum Viable Product ✅ Complete
 - [x] Landing page with project information
 - [x] Battle arena prototype and mechanics
 - [x] Character selection interface
 - [x] Dashboard user interface
 - [x] Multiple page routes (10+ pages)
 
-### Phase 2: Beta Release ✅ COMPLETE
+### Phase 2: Beta Release ✅ Complete
 - [x] Phantom wallet connection and authentication
 - [x] Phaser game engine integration
 - [x] Daily quest system implementation
@@ -232,7 +232,7 @@ lentera/
 - [x] Gamification system (achievements, progression)
 - [x] Campus guild competition system
 
-### Phase 3: Public Launch 🔄 IN PROGRESS
+### Phase 3: Public Launch 🔄 In Progress..
 - [ ] Smart contract development (Anchor)
 - [ ] NFT minting functionality (Metaplex)
 - [ ] $LIT Token official launch
