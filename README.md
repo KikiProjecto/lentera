@@ -75,12 +75,12 @@ Select your Guardian character and engage in turn-based battles against vice mon
 
 ### ✅ Daily Quests
 Educational mini-games with 4 categories:
-- 💰 Budget Management
-- 🏦 Saving Habits
-- 📈 Investment Knowledge
-- 📊 Debt Management
+- Budget Management
+- Saving Habits
+- Investment Knowledge
+- Debt Management
 
-### ✅ Gamification System
+### Gamification System
 - 20+ Achievements with rarity tiers
 - Daily Challenges with rewards
 - XP & Level Progression (10 tiers)
