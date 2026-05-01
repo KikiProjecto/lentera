@@ -43,3 +43,9 @@ next-env.d.ts
 
 # Tests
 tests/
+
+# Skills & MANUS (local only)
+SKILLS/
+FROM_MANUS_1.markdown
+FROM_MANUS_2.markdown
+FROM_MANUS_3.md
