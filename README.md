@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <strong>We are witnessing our Lentera 🪔</strong>
+  <strong>we are witnessing our Lentera 🪔</strong>
 </p>
 
 ---
@@ -241,4 +241,8 @@ lentera/
 ---
 
 
+## Contact me
+
+- **Discord:** [kikiprojecto](https://discordapp.com/users/1125940822446186598)
+- **Telegram:** [KikiProjecto](https://t.me/KikiProjecto)
 
